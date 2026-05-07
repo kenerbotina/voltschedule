@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Opcional: Tus colores de VoltSchedule aquí */
+@theme {
+  --color-primary: #facc15; /* Un amarillo "volt" por ejemplo */
+  --color-secondary: #1e293b;
+}

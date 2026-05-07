@@ -1,0 +1,71 @@
+.
+├── App.tsx
+├── assets
+│   ├── fonts
+│   └── images
+├── components
+│   ├── auth
+│   │   └── ProtectedRoute.tsx
+│   ├── common
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   ├── Loader.tsx
+│   │   ├── LoadingScreen.tsx
+│   │   └── SectionUnderConstruction.tsx
+│   ├── dashboard
+│   │   ├── ScheduleCalendar.tsx
+│   │   ├── Sidebar.tsx
+│   │   └── Topbar.tsx
+│   ├── landing
+│   │   ├── Features.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   └── Navbar.tsx
+│   ├── shared
+│   └── ui
+├── estructura_carpeta.txt
+├── hooks
+│   ├── useAuth.ts
+│   └── useSchedules.ts
+├── i18n.ts
+├── index.css
+├── layouts
+│   ├── DashboardLayout.tsx
+│   └── PublicLayout.tsx
+├── lib
+│   └── supabaseClient.ts
+├── locales
+│   ├── en.json
+│   └── es.json
+├── main.tsx
+├── pages
+│   ├── Dashboard.tsx
+│   ├── Docs.tsx
+│   ├── Features.tsx
+│   ├── ForgotPassword.tsx
+│   ├── Help.tsx
+│   ├── Home.tsx
+│   ├── Login.tsx
+│   ├── NotFound.tsx
+│   ├── Privacy.tsx
+│   ├── Protocol.tsx
+│   ├── Register.tsx
+│   ├── Security.tsx
+│   ├── Settings.tsx
+│   └── Templates.tsx
+├── providers
+├── services
+│   ├── auth.service.ts
+│   ├── profile.service.ts
+│   └── schedule.service.ts
+├── store
+│   └── useStore.ts
+├── types
+│   ├── database.types.ts
+│   └── index.ts
+├── utils
+│   ├── cn.ts
+│   └── dateHelpers.ts
+└── vite-env.d.ts
+
+21 directories, 48 files
