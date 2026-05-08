@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, User, Check } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
@@ -23,15 +23,63 @@ const perks = [
   "Acceso desde cualquier dispositivo",
 ];
 
+// ── Partículas ─────────────────────────────────────────────────
+function Particles() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const particles = Array.from({ length: 60 }, () => ({
+      x:    Math.random() * canvas.width,
+      y:    Math.random() * canvas.height,
+      vx:   (Math.random() - 0.5) * 0.4,
+      vy:   (Math.random() - 0.5) * 0.4,
+      life: Math.random(),
+      size: Math.random() * 1.5 + 0.3,
+    }));
+
+    let animId: number;
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life += 0.004;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width)  p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+        const alpha = Math.sin(p.life * Math.PI) * 0.5;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 242, 255, ${alpha})`;
+        ctx.fill();
+      });
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => cancelAnimationFrame(animId);
+  }, []);
+
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />;
+}
+
 export default function Register() {
   const { signInWithGoogle, user, isLoading } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: "", email: "", password: "", confirm: "" });
-  const [errors, setErrors] = useState({ name: "", email: "", password: "", confirm: "" });
+  const [errors, setErrors]     = useState({ name: "", email: "", password: "", confirm: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showConfirm,  setShowConfirm]  = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting,   setSubmitting]   = useState(false);
 
   useEffect(() => {
     if (user && !isLoading) navigate("/dashboard", { replace: true });
@@ -39,11 +87,11 @@ export default function Register() {
 
   const validate = () => {
     const next = { name: "", email: "", password: "", confirm: "" };
-    if (!formData.name.trim()) next.name = "El nombre es obligatorio";
-    if (!formData.email.trim()) next.email = "El correo es obligatorio";
+    if (!formData.name.trim())    next.name     = "El nombre es obligatorio";
+    if (!formData.email.trim())   next.email    = "El correo es obligatorio";
     else if (!emailRegex.test(formData.email)) next.email = "Correo inválido";
     if (!formData.password.trim()) next.password = "La contraseña es obligatoria";
-    else if (formData.password.length < 8) next.password = "Mínimo 8 caracteres";
+    else if (formData.password.length < 8)     next.password = "Mínimo 8 caracteres";
     if (formData.password !== formData.confirm) next.confirm = "Las contraseñas no coinciden";
     setErrors(next);
     return !Object.values(next).some(Boolean);
@@ -52,7 +100,7 @@ export default function Register() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
+    setErrors((prev)    => ({ ...prev, [name]: "" }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -84,9 +132,9 @@ export default function Register() {
     const p = formData.password;
     if (!p) return 0;
     let score = 0;
-    if (p.length >= 8) score++;
-    if (/[A-Z]/.test(p)) score++;
-    if (/[0-9]/.test(p)) score++;
+    if (p.length >= 8)          score++;
+    if (/[A-Z]/.test(p))        score++;
+    if (/[0-9]/.test(p))        score++;
     if (/[^A-Za-z0-9]/.test(p)) score++;
     return score;
   };
@@ -108,25 +156,34 @@ export default function Register() {
     }`;
 
   return (
-    <div className="min-h-screen bg-[#080a0c] flex overflow-hidden">
-      {/* LEFT PANEL */}
-      <div className="hidden lg:flex lg:w-[38%] relative flex-col justify-between p-12 border-r border-white/5">
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(#00f2ff 1px, transparent 1px), linear-gradient(90deg, #00f2ff 1px, transparent 1px)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <div className="min-h-screen bg-[#080a0c] flex overflow-hidden relative">
 
+      {/* ── Partículas globales ── */}
+      <Particles />
+
+      {/* ── Glows ambientales ── */}
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
+
+      {/* ── LEFT PANEL ── */}
+      <div className="hidden lg:flex lg:w-[38%] relative flex-col justify-between p-12 border-r border-white/5">
+
+        {/* Logo → "/" */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative z-10 flex items-center gap-3"
+          className="relative z-10"
         >
-          <img src="/logo.svg" alt="VoltSchedule" className="w-9 h-9" />
-          <span className="text-white font-black text-xl tracking-tight">VoltSchedule</span>
+          <Link to="/" className="inline-flex items-center gap-3 group">
+            <img
+              src="/logo.svg"
+              alt="VoltSchedule"
+              className="w-9 h-9 transition-transform duration-200 group-hover:scale-105"
+            />
+            <span className="text-white font-black text-xl tracking-tight transition-colors duration-200 group-hover:text-[#00f2ff]">
+              VoltSchedule
+            </span>
+          </Link>
         </motion.div>
 
         <motion.div
@@ -174,20 +231,22 @@ export default function Register() {
         </motion.p>
       </div>
 
-      {/* RIGHT PANEL */}
+      {/* ── RIGHT PANEL ── */}
       <div className="flex-1 flex items-center justify-center px-6 py-12 relative">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
-
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="w-full max-w-md relative z-10"
         >
-          {/* Mobile logo */}
+          {/* Mobile logo → "/" */}
           <div className="flex items-center gap-2 mb-10 lg:hidden">
-            <img src="/logo.svg" alt="VoltSchedule" className="w-8 h-8" />
-            <span className="text-white font-black tracking-tight">VoltSchedule</span>
+            <Link to="/" className="inline-flex items-center gap-2 group">
+              <img src="/logo.svg" alt="VoltSchedule" className="w-8 h-8 transition-transform duration-200 group-hover:scale-105" />
+              <span className="text-white font-black tracking-tight transition-colors duration-200 group-hover:text-[#00f2ff]">
+                VoltSchedule
+              </span>
+            </Link>
           </div>
 
           <div className="mb-8">
@@ -195,7 +254,6 @@ export default function Register() {
             <p className="text-gray-500 text-sm mt-1">Únete y organiza tu tiempo</p>
           </div>
 
-          {/* Form first */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <div className={fieldClass("name")}>
@@ -298,7 +356,6 @@ export default function Register() {
               </AnimatePresence>
             </div>
 
-            {/* Crear cuenta — primary */}
             <button
               type="submit" disabled={submitting || isLoading}
               className="w-full bg-[#00f2ff] text-[#080a0c] font-black text-sm uppercase tracking-widest py-3.5 rounded-2xl transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
@@ -308,7 +365,6 @@ export default function Register() {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-white/8" />
@@ -320,7 +376,6 @@ export default function Register() {
             </div>
           </div>
 
-          {/* Google — below */}
           <button
             onClick={handleGoogleLogin} disabled={isLoading}
             className="w-full flex items-center justify-center gap-3 bg-white text-gray-900 font-semibold text-sm py-3.5 rounded-2xl transition-all hover:bg-gray-100 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"

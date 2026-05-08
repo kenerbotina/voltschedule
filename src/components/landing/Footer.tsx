@@ -6,24 +6,24 @@ export const Footer = () => {
       <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
           
-          {/* Columna Logo y Bio */}
-          <div className="md:max-w-md lg:col-span-2">
-            <Link to="/" className="inline-flex items-center group">
-              <img src="/logo.svg" alt="Volt" className="w-8 h-8 transition-transform group-hover:rotate-12" />
-              <span className="ml-2 text-2xl font-black tracking-tighter text-white italic uppercase">
-                Volt<span className="text-[#00f2ff]">Schedule</span>
-              </span>
-            </Link>
-            <div className="mt-4 lg:max-w-sm">
-              <p className="text-sm text-gray-400">
-                Optimizando el tiempo de los estudiantes con precisión quirúrgica. 
-                Construido para quienes no aceptan menos que la excelencia en su flujo de trabajo.
-              </p>
-              <p className="mt-4 text-sm text-gray-500 italic">
-                Cali, Colombia • 2026
-              </p>
-            </div>
-          </div>
+         {/* Columna Logo y Bio */}
+<div className="md:max-w-md lg:col-span-2">
+  <Link to="/" className="inline-flex items-center group">
+    <img src="/logo.svg" alt="Volt" className="w-8 h-8 transition-transform group-hover:rotate-12" />
+    <span className="ml-2 text-2xl font-black tracking-tighter text-white italic uppercase">
+      Volt<span className="text-[#00f2ff]">Schedule</span>
+    </span>
+  </Link>
+  <div className="mt-4 lg:max-w-sm">
+    <p className="text-sm text-gray-400">
+      Plataforma integral de agendamiento y gestión de citas para profesionales. 
+      Optimiza tu flujo de trabajo con tecnología de alta precisión.
+    </p>
+    <p className="mt-4 text-sm text-gray-500 font-medium">
+      Cali, Valle del Cauca, Colombia • CP 760032
+    </p>
+  </div>
+</div>
 
           {/* Columnas de Links */}
 <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4 uppercase tracking-[0.2em] text-[10px] font-bold">
@@ -55,39 +55,41 @@ export const Footer = () => {
     </ul>
   </div>
 
-  {/* COMUNIDAD - Links Externos */}
-  <div>
-    <p className="text-[#00f2ff] mb-4">Comunidad</p>
-    <ul className="space-y-2">
-      <li>
-        <a href="https://github.com/kenerbotina/voltschedule" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">GitHub</a>
-      </li>
-      <li>
-        <a href="https://discord.gg/tu-servidor" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">Discord</a>
-      </li>
-      <li>
-        <Link to="/projects" className="text-gray-500 hover:text-white transition-colors">
-          Proyectos
-        </Link>
-      </li>
-    </ul>
-  </div>
+  {/* COMUNIDAD - Links de la Marca */}
+<div>
+  <p className="text-[#00f2ff] mb-4">Comunidad</p>
+  <ul className="space-y-2">
+    <li>
+      <a href="https://github.com/kenerbotina/voltschedule" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">GitHub</a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/profile.php?id=61589625951890" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">Facebook</a>
+    </li>
+    <li>
+      <a href="https://instagram.com/voltschedule" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">Instagram</a>
+    </li>
+  </ul>
+</div>
 
-  {/* AYUDA - Soporte y FAQ */}
-  <div>
-    <p className="text-[#00f2ff] mb-4">Ayuda</p>
-    <ul className="space-y-2">
-      <li>
-        <Link to="/docs" className="text-gray-500 hover:text-white transition-colors">Documentación</Link>
-      </li>
-      <li>
-        <Link to="/faq" className="text-gray-500 hover:text-white transition-colors">FAQ</Link>
-      </li>
-      <li>
-        <a href="mailto:soporte@voltschedule.com" className="text-gray-500 hover:text-white transition-colors">Soporte</a>
-      </li>
-    </ul>
-  </div>
+{/* AYUDA - Soporte Directo */}
+<div>
+  <p className="text-[#00f2ff] mb-4">Soporte</p>
+  <ul className="space-y-2">
+    <li>
+      <a href="mailto:voltschedule@gmail.com" className="text-gray-500 hover:text-white transition-colors">voltschedule@gmail.com</a>
+    </li>
+    <li>
+      <a 
+        href="https://wa.me/573162945169?text=Hola!%20Me%20interesa%20saber%20más%20sobre%20VoltSchedule" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-[#00f2ff] hover:underline transition-colors font-bold"
+      >
+        WhatsApp Business
+      </a>
+    </li>
+  </ul>
+</div>
 
   {/* LEGAL - Páginas aparte */}
   <div>

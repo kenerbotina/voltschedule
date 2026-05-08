@@ -1,0 +1,268 @@
+# VoltSchedule - Documentación Visual
+
+## 🎨 PALETA DE COLORES
+
+### Colores Principales
+- **Fondo Principal**: `#080a0c` (Negro oscuro)
+- **Color Acén**: `#00f2ff` (Cian brillante)
+- **Texto Principal**: `white` (#ffffff)
+- **Texto Secundario**: `gray-400` (#9ca3af)
+- **Texto Terciario**: `gray-500` (#6b7280)
+
+### Colores de Estados
+- **Hover**: `hover:bg-[#00f2ff]/10` (Cian con 10% opacidad)
+- **Activo**: `bg-[#00f2ff]/10 text-[#00f2ff] border border-[#00f2ff]/20`
+- **Error**: `hover:bg-red-500/10 hover:text-red-400`
+- **Éxito**: `bg-green-500/10 text-green-400`
+
+### Colores de Bordes y Fondos
+- **Bordes**: `border-white/10` (Blanco con 10% opacidad)
+- **Fondos Secundarios**: `bg-white/5` (Blanco con 5% opacidad)
+- **Fondos Hover**: `hover:bg-white/5`
+
+## 📝 FUENTES Y TIPOGRAFÍA
+
+### Familias de Fuente
+- **Principal**: Sistema por defecto (sans-serif)
+- **Alternativa**: `font-sans` (Tailwind default)
+
+### Pesos de Fuente
+- **Extra Bold**: `font-black` (900)
+- **Bold**: `font-bold` (700)
+- **Semibold**: `font-semibold` (600)
+- **Medium**: `font-medium` (500)
+- **Normal**: `font-normal` (400)
+- **Light**: `font-light` (300)
+
+### Tamaños de Texto
+- **XS**: `text-xs` (12px)
+- **SM**: `text-sm` (14px)
+- **Base**: `text-base` (16px)
+- **LG**: `text-lg` (18px)
+- **XL**: `text-xl` (20px)
+- **2XL**: `text-2xl` (24px)
+- **3XL**: `text-3xl` (30px)
+- **4XL**: `text-4xl` (36px)
+- **5XL**: `text-5xl` (48px)
+
+### Espaciado de Letras
+- **Muy Estrecho**: `tracking-tight` (-0.025em)
+- **Estrecho**: `tracking-tighter` (-0.05em)
+- **Normal**: `tracking-normal` (0)
+- **Ancho**: `tracking-wide` (0.025em)
+- **Muy Ancho**: `tracking-wider` (0.05em)
+- **Extra Ancho**: `tracking-[0.2em]` (0.2em)
+- **Ultra Ancho**: `tracking-[0.3em]` (0.3em)
+- **Máximo**: `tracking-[0.35em]` (0.35em)
+
+### Altura de Línea
+- **Tight**: `leading-tight` (1.25)
+- **Normal**: `leading-normal` (1.5)
+- **Relaxed**: `leading-relaxed` (1.625)
+- **Loose**: `leading-loose` (2)
+
+## 🔧 COMPONENTES VISUALES
+
+### Librerías Utilizadas
+- **Framer Motion**: `^12.38.0` - Animaciones
+- **Lucide React**: `^1.8.0` - Iconos
+- **Sonner**: `^2.0.7` - Notificaciones (Toasts)
+- **Tailwind CSS**: `^4.2.2` - Framework CSS
+
+### Componentes Principales
+
+#### Sidebar
+- **Ancho**: `w-72` (288px)
+- **Posición**: `fixed left-0 top-0 bottom-0`
+- **Fondo**: `bg-[#080a0c]`
+- **Bordes**: `border-r border-white/10`
+- **Sombras**: `shadow-xl`
+- **Transiciones**: `transition-transform duration-300`
+
+#### Botones
+- **Estilo Principal**: `rounded-3xl border border-white/10 bg-white/5`
+- **Hover**: `hover:bg-[#00f2ff]/10 hover:text-[#00f2ff]`
+- **Activo**: `bg-[#00f2ff]/10 text-[#00f2ff] border border-[#00f2ff]/20`
+- **Tamaños**: `px-4 py-3` (padding), `text-sm font-semibold`
+
+#### Inputs
+- **Estilo**: `rounded-2xl bg-white/4 border border-white/8`
+- **Focus**: `ring-1 ring-cyan-500/50`
+- **Error**: `ring-1 ring-red-500/50`
+- **Padding**: `pl-11 pr-4 py-3.5`
+
+#### Cards/Contenedores
+- **Estilo**: `rounded-[32px] border border-white/10 bg-white/5`
+- **Padding**: `p-4`
+- **Sombras**: `shadow-lg shadow-black/30`
+
+### Iconos Utilizados (Lucide React)
+- **LayoutGrid**: Dashboard
+- **CalendarDays**: Calendario
+- **ClipboardList**: Horarios
+- **MessageCircle**: Mensajes
+- **Users**: Equipo
+- **BarChart3**: Analytics
+- **Settings**: Configuración
+- **LogOut**: Cerrar sesión
+- **Menu**: Abrir sidebar
+- **ChevronLeft**: Cerrar sidebar
+- **Mail**: Correo electrónico
+- **Lock**: Contraseña
+- **Eye/EyeOff**: Mostrar/ocultar contraseña
+- **Bell**: Notificaciones
+- **Search**: Búsqueda
+- **Sparkles**: Elementos decorativos
+- **Construction**: Secciones en construcción
+- **ArrowRight**: Flechas de navegación
+- **Globe**: Selector de idioma
+- **HelpCircle**: Ayuda
+- **Zap**: Funciones
+- **ArrowLeft**: Retroceder
+- **Home**: Inicio
+
+## 🎭 ANIMACIONES (Framer Motion)
+
+### Tipos de Animaciones
+- **Fade In**: `initial={{ opacity: 0 }} animate={{ opacity: 1 }}`
+- **Slide In**: `initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}`
+- **Scale**: `initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 0.75, scale: 1 }}`
+- **Stagger**: Animaciones secuenciales con `delay`
+
+### Duraciones
+- **Rápida**: `duration: 0.2` (200ms)
+- **Normal**: `duration: 0.3` (300ms)
+- **Lenta**: `duration: 0.6` (600ms)
+- **Muy Lenta**: `duration: 1.1` (1100ms)
+
+### Easing
+- **Suave**: `ease: [0.16, 1, 0.3, 1]` (cubic-bezier)
+- **Lineal**: `ease: "linear"`
+- **Ease Out**: `ease: "easeOut"`
+
+### Transiciones CSS
+- **Hover**: `transition-all duration-200`
+- **Transform**: `transition-transform duration-300`
+- **Colors**: `transition-colors duration-200`
+
+## 📐 ESPACIADO Y DIMENSIONES
+
+### Padding
+- **XS**: `p-2` (8px)
+- **SM**: `p-4` (16px)
+- **MD**: `p-6` (24px)
+- **LG**: `px-6 py-5` (24px horizontal, 20px vertical)
+
+### Margins
+- **Entre elementos**: `gap-3` (12px), `gap-4` (16px)
+- **Espaciado vertical**: `space-y-2` (8px), `space-y-4` (16px)
+
+### Bordes Redondeados
+- **Pequeño**: `rounded-xl` (12px)
+- **Mediano**: `rounded-2xl` (16px)
+- **Grande**: `rounded-3xl` (24px)
+- **Muy Grande**: `rounded-[32px]` (32px)
+
+### Sombras
+- **Pequeña**: `shadow-lg`
+- **Media**: `shadow-lg shadow-black/30`
+- **Grande**: `shadow-xl`
+
+## 🎯 PATRONES DE DISEÑO
+
+### Estados Interactivos
+1. **Hover**: Cambio de color de fondo y borde
+2. **Active**: Estado resaltado con color acén
+3. **Focus**: Anillo de foco con color acén
+4. **Disabled**: Opacidad reducida
+
+### Layout Responsivo
+- **Mobile First**: Diseño adaptativo
+- **Breakpoints**: `sm:`, `md:`, `lg:`, `xl:`
+- **Sidebar**: Se oculta en móvil, se muestra como sheet
+
+### Tema Oscuro
+- **Fondo**: Siempre oscuro (#080a0c)
+- **Texto**: Blanco y grises
+- **Acén**: Cian brillante (#00f2ff)
+- **Contraste**: Alto contraste para accesibilidad
+
+## 🛠️ UTILIDADES TAILWIND FRECUENTES
+
+### Flexbox
+- `flex items-center justify-center`
+- `flex flex-col`
+- `flex-1`
+
+### Grid
+- `grid place-items-center`
+- `grid grid-cols-2 gap-5`
+
+### Posicionamiento
+- `fixed left-3 top-1/2 -translate-y-1/2`
+- `absolute inset-y-0`
+- `relative`
+
+### Overflow
+- `overflow-hidden`
+- `overflow-y-auto`
+- `overflow-x-hidden`
+
+### Z-Index
+- `z-50` (sidebar toggle)
+- `z-40` (sidebar)
+- `z-10` (elementos superiores)
+
+## 📱 COMPONENTES DE UI PERSONALIZADOS
+
+### LoadingScreen
+- Spinner personalizado con Loader component
+- Fondo oscuro con centrado absoluto
+
+### SectionUnderConstruction
+- Icono Construction de Lucide
+- Toast informativo al cargar
+- Redirección automática
+
+### ProtectedRoute
+- Pantalla de carga mientras verifica autenticación
+- Redirección a login si no autenticado
+
+### Sidebar (Colapsable)
+- Estado local para colapso
+- Icono flotante para mostrar/ocultar
+- Navegación con NavLink de React Router
+- Sección de usuario con avatar/iniciales
+
+## 🎨 ESTILOS ESPECÍFICOS POR COMPONENTE
+
+### Navbar (Landing)
+- `bg-[#080a0c]/80 backdrop-blur-xl`
+- Logo con hover scale
+- Botones con glow effect
+
+### Header (Landing)
+- Animaciones de entrada escalonadas
+- Gradientes de texto
+- Botones con shadow glow
+
+### Login/Register
+- Formularios con focus rings
+- Iconos en inputs
+- Animaciones de error/éxito
+
+### Dashboard Layout
+- Sidebar fijo con toggle
+- Topbar con elementos de búsqueda/notificaciones
+- Main content con scroll
+
+### Cards y Contenedores
+- Bordes redondeados grandes
+- Fondos semi-transparentes
+- Hover effects suaves
+
+---
+
+**Última actualización**: 7 de mayo de 2026
+**Versión**: 1.0.0
+**Framework**: React + TypeScript + Tailwind CSS v4 + Vite

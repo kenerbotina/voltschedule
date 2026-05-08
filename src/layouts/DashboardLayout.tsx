@@ -1,22 +1,26 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
 import Sidebar from "../components/dashboard/Sidebar";
 import Topbar from "../components/dashboard/Topbar";
 
 export default function DashboardLayout() {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
     <div className="flex h-screen bg-[#080a0c]">
-      {/* 1. El Sidebar fijo a la izquierda */}
-      <Sidebar />
+      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
-      <div className="flex flex-col flex-1 overflow-hidden">
-        {/* 2. Una barra superior si la necesitas */}
+      <motion.div
+        animate={{ marginLeft: collapsed ? 80 : 288 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col flex-1 overflow-hidden"
+      >
         <Topbar />
-
-        {/* 3. El contenido dinámico (tus páginas) */}
         <main className="flex-1 overflow-y-auto p-6">
-          <Outlet /> 
+          <Outlet />
         </main>
-      </div>
+      </motion.div>
     </div>
   );
 }

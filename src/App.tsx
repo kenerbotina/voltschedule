@@ -25,6 +25,15 @@ import { SecurityPage } from "./pages/Security";
 import { ProtocolPage } from "./pages/Protocol";
 import { DocsPage } from "./pages/Docs";
 
+function Placeholder({ title }: { title: string }) {
+  return (
+    <div className="text-white p-10">
+      <h1 className="text-4xl font-black mb-4">{title}</h1>
+      <p className="text-gray-400">Esta sección está en construcción.</p>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Router>
@@ -51,7 +60,12 @@ export default function App() {
 
         <Route element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/settings" element={<Settings />} />
+          <Route path="/calendar" element={<Placeholder title="Calendario" />} />
+          <Route path="/schedules" element={<Placeholder title="Horarios" />} />
+          <Route path="/messages" element={<Placeholder title="Mensajes" />} />
+          <Route path="/team" element={<Placeholder title="Equipo" />} />
+          <Route path="/analytics" element={<Placeholder title="Analytics" />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
